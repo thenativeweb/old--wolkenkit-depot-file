@@ -1,6 +1,6 @@
 {
   "name": "wolkenkit-depot-file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "wolkenkit-depot-file is a filesystem-based blob server.",
   "contributors": [
     {
