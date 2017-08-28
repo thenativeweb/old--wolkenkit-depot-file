@@ -16,7 +16,6 @@
       "email": "christian.nolte@thenativeweb.io"
     }
   ],
-  "private": true,
   "dependencies": {
     "cors": "2.8.3",
     "datendepot": "0.1.1",
