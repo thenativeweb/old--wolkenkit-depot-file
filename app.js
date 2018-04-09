@@ -27,4 +27,4 @@ spdy.createServer({
     name: processEnv('IDENTITYPROVIDER_NAME'),
     certificate: processEnv('IDENTITYPROVIDER_CERTIFICATE')
   }
-})).listen(3000);
+})).listen(443);
