@@ -8,10 +8,10 @@ const assert = require('assertthat'),
       isolated = require('isolated'),
       request = require('supertest');
 
-const getApp = require('../lib/getApp');
+const getApp = require('../../lib/getApp');
 
 /* eslint-disable no-sync */
-const certificate = fs.readFileSync(path.join(__dirname, 'keys', 'certificate.pem'));
+const certificate = fs.readFileSync(path.join(__dirname, '..', 'shared', 'keys', 'certificate.pem'));
 /* eslint-enable no-sync */
 
 suite('getApp', () => {
@@ -144,7 +144,7 @@ suite('getApp', () => {
         const id = 'c572bcd4-f68f-4940-a94c-c6b3587dfcf2';
 
         isolated({
-          files: path.join(__dirname, 'storage', 'data', id)
+          files: path.join(__dirname, '..', 'shared', 'storage', 'data', id)
         }, (errIsolated, directory) => {
           assert.that(errIsolated).is.null();
 
@@ -170,7 +170,7 @@ suite('getApp', () => {
         const id = 'c572bcd4-f68f-4940-a94c-c6b3587dfcf2';
 
         isolated({
-          files: path.join(__dirname, 'storage', 'data', id)
+          files: path.join(__dirname, '..', 'shared', 'storage', 'data', id)
         }, (errIsolated, directory) => {
           assert.that(errIsolated).is.null();
 
@@ -196,7 +196,7 @@ suite('getApp', () => {
         const id = 'c572bcd4-f68f-4940-a94c-c6b3587dfcf2';
 
         isolated({
-          files: path.join(__dirname, 'storage', 'data', id)
+          files: path.join(__dirname, '..', 'shared', 'storage', 'data', id)
         }, (errIsolated, directory) => {
           assert.that(errIsolated).is.null();
 
@@ -222,7 +222,7 @@ suite('getApp', () => {
         const id = '932104d2-9929-40b4-8f3c-47912314da0d';
 
         isolated({
-          files: path.join(__dirname, 'storage', 'data', id)
+          files: path.join(__dirname, '..', 'shared', 'storage', 'data', id)
         }, (errIsolated, directory) => {
           assert.that(errIsolated).is.null();
 

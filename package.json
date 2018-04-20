@@ -28,9 +28,11 @@
     "assertthat": "0.11.0",
     "formats": "0.5.5",
     "isolated": "0.3.0",
-    "roboter": "0.15.4",
-    "roboter-server": "0.15.4",
+    "roboter": "1.0.2",
     "supertest": "3.0.0"
+  },
+  "scripts": {
+    "build": "docker build -t thenativeweb/wolkenkit-depot-file ."
   },
   "repository": {
     "type": "git",
