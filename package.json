@@ -19,14 +19,15 @@
   "dependencies": {
     "cors": "2.8.4",
     "datendepot": "0.1.1",
-    "express": "4.16.2",
-    "limes": "0.5.0",
-    "processenv": "0.1.1",
-    "spdy": "3.4.7"
+    "express": "4.16.3",
+    "limes": "1.0.1",
+    "processenv": "1.0.0",
+    "spdy": "3.4.7",
+    "tailwind": "2.1.0"
   },
   "devDependencies": {
-    "assertthat": "0.11.0",
-    "formats": "0.5.5",
+    "assertthat": "1.0.0",
+    "formats": "1.0.0",
     "isolated": "0.3.0",
     "roboter": "1.0.2",
     "supertest": "3.0.0"

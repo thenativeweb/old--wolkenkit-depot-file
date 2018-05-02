@@ -1,30 +1,45 @@
 'use strict';
 
 const fs = require('fs'),
-      path = require('path');
+      path = require('path'),
+      { promisify } = require('util');
 
-const processEnv = require('processenv'),
-      spdy = require('spdy');
+const processenv = require('processenv'),
+      spdy = require('spdy'),
+      tailwind = require('tailwind');
 
 const getApp = require('./lib/getApp');
 
-const blobsDirectory = processEnv('BLOBS') || '/blobs',
-      keysDirectory = processEnv('KEYS');
+const readFile = promisify(fs.readFile);
 
-const keys = {
-  /* eslint-disable no-sync */
-  privateKey: fs.readFileSync(path.join(keysDirectory, 'privateKey.pem'), { encoding: 'utf8' }),
-  certificate: fs.readFileSync(path.join(keysDirectory, 'certificate.pem'), { encoding: 'utf8' })
-  /* eslint-enable no-sync */
-};
+const blobsDirectory = processenv('BLOBS') || '/blobs',
+      keysDirectory = processenv('KEYS');
 
-spdy.createServer({
-  key: keys.privateKey,
-  cert: keys.certificate
-}, getApp({
-  directory: blobsDirectory,
-  identityProvider: {
-    name: processEnv('IDENTITYPROVIDER_NAME'),
-    certificate: processEnv('IDENTITYPROVIDER_CERTIFICATE')
-  }
-})).listen(3000);
+const port = processenv('PORT') || 3000,
+      statusCorsOrigin = processenv('STATUS_CORS_ORIGIN') || '*',
+      statusPort = processenv('STATUS_PORT') || 3333;
+
+(async () => {
+  const keys = {
+    privateKey: await readFile(path.join(keysDirectory, 'privateKey.pem'), { encoding: 'utf8' }),
+    certificate: await readFile(path.join(keysDirectory, 'certificate.pem'), { encoding: 'utf8' })
+  };
+
+  const app = tailwind.createApp();
+
+  await app.status.use(new app.wires.status.http.Server({
+    port: statusPort,
+    corsOrigin: statusCorsOrigin
+  }));
+
+  spdy.createServer({
+    key: keys.privateKey,
+    cert: keys.certificate
+  }, getApp({
+    directory: blobsDirectory,
+    identityProvider: {
+      name: processenv('IDENTITYPROVIDER_NAME'),
+      certificate: processenv('IDENTITYPROVIDER_CERTIFICATE')
+    }
+  })).listen(port);
+})();
