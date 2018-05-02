@@ -25,7 +25,7 @@ const port = processenv('PORT') || 3000,
     certificate: await readFile(path.join(keysDirectory, 'certificate.pem'), { encoding: 'utf8' })
   };
 
-  const app = tailwind.createApp();
+  const app = tailwind.createApp({});
 
   await app.status.use(new app.wires.status.http.Server({
     port: statusPort,
