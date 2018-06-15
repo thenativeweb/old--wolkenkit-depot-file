@@ -15,7 +15,7 @@ const readFile = promisify(fs.readFile);
 const blobsDirectory = processenv('BLOBS') || '/blobs',
       keysDirectory = processenv('KEYS');
 
-const port = processenv('PORT') || 3000,
+const port = processenv('PORT') || 443,
       statusCorsOrigin = processenv('STATUS_CORS_ORIGIN') || '*',
       statusPort = processenv('STATUS_PORT') || 3333;
 
