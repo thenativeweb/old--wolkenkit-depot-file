@@ -21,15 +21,15 @@
     "datendepot": "0.1.1",
     "express": "4.16.3",
     "limes": "1.0.1",
-    "processenv": "1.0.2",
+    "processenv": "1.1.0",
     "spdy": "3.4.7",
-    "tailwind": "2.1.1"
+    "tailwind": "2.2.0"
   },
   "devDependencies": {
     "assertthat": "1.0.0",
     "formats": "1.0.0",
     "isolated": "0.3.0",
-    "roboter": "1.0.5",
+    "roboter": "1.0.6",
     "supertest": "3.1.0"
   },
   "scripts": {
