@@ -19,7 +19,7 @@
   "dependencies": {
     "cors": "2.8.4",
     "datendepot": "0.1.1",
-    "express": "4.16.3",
+    "express": "4.17.3",
     "limes": "1.0.1",
     "processenv": "1.1.0",
     "spdy": "3.4.7",
